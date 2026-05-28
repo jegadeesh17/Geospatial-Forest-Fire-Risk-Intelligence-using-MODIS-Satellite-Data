@@ -47,9 +47,13 @@ The system analyzes thermal anomalies, spatial wildfire patterns, and temporal f
 Forest-Fire-Risk-Analytics/
 │
 ├── data/                     # MODIS wildfire datasets
+│
 ├── notebooks/                # Jupyter notebooks for EDA and modeling
+│
 ├── models/                   # Saved trained models
+│
 ├── visualizations/           # Heatmaps and output plots
+│
 ├── src/
 │   ├── preprocessing.py      # Data cleaning
 │   ├── feature_engineering.py # Feature engineering logic
@@ -69,21 +73,11 @@ Forest-Fire-Risk-Analytics/
 
 ### **How It Works**
 
-### **1. Data Preprocessing**
+### **1. Data Preprocessing & Feature Engineering**
 
-* Cleans MODIS wildfire observations
-* Handles missing values and inconsistent timestamps
-* Extracts temporal features:
-
-  * Month
-  * Hour
-  * Seasonal activity
-
----
-
-### **2. Feature Engineering**
-
-The system creates advanced wildfire intelligence features:
+* Cleans MODIS wildfire observations and handles missing values.
+* Extracts temporal features: Month, Hour, and Seasonal activity.
+* Creates advanced wildfire intelligence features:
 
 | Feature                      | Purpose                                    |
 | ---------------------------- | ------------------------------------------ |
@@ -94,7 +88,7 @@ The system creates advanced wildfire intelligence features:
 
 ---
 
-### **3. Spatial Clustering**
+### **2. Spatial Clustering**
 
 Uses KMeans clustering on latitude and longitude coordinates to identify geographically similar wildfire regions.
 
@@ -102,36 +96,14 @@ Uses KMeans clustering on latitude and longitude coordinates to identify geograp
 from sklearn.cluster import KMeans
 
 kmeans = KMeans(n_clusters=15, random_state=42)
-
-df['region_cluster'] = kmeans.fit_predict(
-    df[['latitude', 'longitude']]
-)
+df['region_cluster'] = kmeans.fit_predict(df[['latitude', 'longitude']])
 ```
 
 ---
 
-### **4. High-Risk Fire Classification**
+### **3. High-Risk Fire Classification**
 
-The system engineers a custom wildfire risk label using:
-
-* Fire Radiative Power (`frp`)
-* Detection confidence score
-
-High-risk wildfire events are then classified using XGBoost.
-
----
-
-### **5. Machine Learning Model**
-
-#### **Model Used**
-
-* **XGBoost Classifier**
-
-#### **Why XGBoost?**
-
-* Handles nonlinear wildfire patterns effectively
-* Strong performance on tabular geospatial data
-* Captures complex interactions between thermal and spatial features
+The system engineers a custom wildfire risk label using Fire Radiative Power (`frp`) and detection confidence score, then classifies high-risk wildfire events using an XGBoost Classifier.
 
 ---
 
@@ -145,33 +117,28 @@ High-risk wildfire events are then classified using XGBoost.
 
 ---
 
-### **6. Geospatial Visualization**
+### **Interactive Application Deployment**
 
-The project generates interactive wildfire hotspot maps using Folium.
+The project features an interactive **Streamlit Web Application** designed with clean UI aesthetics, enabling users to explore geospatial clusters, map active hot spots, and monitor risk profiles.
 
-#### Features:
-
-* High-risk fire hotspot mapping
-* Fire intensity scaling
-* Regional wildfire density visualization
-* Interactive hover-based information display
+#### **To Launch the Platform Locally:**
+```powershell
+python -m streamlit run ".\forest fire risk intelligence\src\app.py"
+```
 
 ---
 
-### **7. Temporal Trend Analytics**
+### **Technology Stack**
 
-Tracks:
-
-* Monthly wildfire activity
-* Regional fire density
-* Seasonal wildfire surges
-* Moving-average fire trends
-
-This enables:
-
-* Early warning analytics
-* Fire-prone season identification
-* Resource prioritization
+| Category             | Tools                 |
+| -------------------- | --------------------- |
+| Programming          | Python                |
+| Data Processing      | Pandas, NumPy         |
+| Machine Learning     | Scikit-learn, XGBoost |
+| Visualization        | Matplotlib, Seaborn   |
+| Geospatial Analytics | Folium                |
+| Notebook Environment | Jupyter Notebook      |
+| Web Framework        | Streamlit             |
 
 ---
 
@@ -214,11 +181,7 @@ fire_detection.ipynb
 ```python
 from xgboost import XGBClassifier
 
-xgb_model = XGBClassifier(
-    random_state=42,
-    eval_metric='logloss'
-)
-
+xgb_model = XGBClassifier(random_state=42, eval_metric='logloss')
 xgb_model.fit(X_train, y_train)
 ```
 
@@ -235,34 +198,12 @@ A disaster management authority can use the platform to:
 
 ---
 
-### **Technology Stack**
-
-| Category             | Tools                 |
-| -------------------- | --------------------- |
-| Programming          | Python                |
-| Data Processing      | Pandas, NumPy         |
-| Machine Learning     | Scikit-learn, XGBoost |
-| Visualization        | Matplotlib, Seaborn   |
-| Geospatial Analytics | Folium                |
-| Notebook Environment | Jupyter Notebook      |
-
----
-
 ### **Future Improvements**
 
 * Real-time NASA FIRMS API integration
 * Weather and humidity data integration
 * Deep learning-based fire spread forecasting
 * Burn severity estimation using satellite imagery
-
----
-
-### **References & Resources**
-
-1. NASA MODIS Fire Data Documentation
-2. NASA FIRMS Active Fire Data
-3. XGBoost Documentation
-4. Folium Geospatial Visualization Library
 
 ---
 
@@ -275,9 +216,3 @@ A disaster management authority can use the platform to:
 ### **License**
 
 MIT License
-
----
-
-### **Contact**
-
-For collaboration, research discussions, or contributions, feel free to raise an issue in the repository.
