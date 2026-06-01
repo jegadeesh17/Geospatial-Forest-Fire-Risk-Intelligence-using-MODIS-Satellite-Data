@@ -9,3 +9,4 @@ jupyter
 streamlit
 streamlit-folium
 prophet
+altair

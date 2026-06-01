@@ -16,3 +16,11 @@ data/modisdata/
 .vscode/
 .idea/
 .gemini/
+# Logs
+logs-*.txt
+
+# Documents
+*.docx
+*.pdf
+*.doc
+*.wpf
