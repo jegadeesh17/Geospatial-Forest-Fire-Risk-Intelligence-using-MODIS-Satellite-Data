@@ -100,7 +100,7 @@ col_map, col_state = st.columns([2, 1])
 with col_map:
     with st.spinner("Rendering mapping engine..."):
         fire_map = create_fire_map(filtered_df, center=[filtered_df['latitude'].mean(), filtered_df['longitude'].mean()], zoom=5, sample_size=1500)
-        st_folium(fire_map, use_container_width=True, height=500, returned_objects=[])
+        st_folium(fire_map, width="stretch", height=500, returned_objects=[])
 
 with col_state:
     st.subheader("Regional Risk Distribution")
@@ -113,7 +113,7 @@ with col_state:
         tooltip=['Region', 'Fire Count']
     ).properties(height=400)
     
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
     st.caption("Top 5 highest risk regions (pseudo-state clusters) for the selected period.")
 
 st.divider()
