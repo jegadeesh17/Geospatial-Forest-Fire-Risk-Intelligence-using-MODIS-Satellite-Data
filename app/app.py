@@ -7,7 +7,7 @@ import sys
 import altair as alt
 
 # Ensure src directory is in path
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 from preprocessing import preprocess_data
 from feature_engineering import create_features
