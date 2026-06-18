@@ -44,28 +44,16 @@ The system analyzes thermal anomalies, spatial wildfire patterns, and temporal f
 ### **Project Structure**
 
 ```bash
-Forest-Fire-Risk-Analytics/
+ForestFireIntelligence/
 │
-├── data/                     # MODIS wildfire datasets
-│
-├── notebooks/                # Jupyter notebooks for EDA and modeling
-│
-├── models/                   # Saved trained models
-│
-├── visualizations/           # Heatmaps and output plots
-│
-├── src/
-│   ├── preprocessing.py      # Data cleaning
-│   ├── feature_engineering.py # Feature engineering logic
-│   ├── modeling.py           # Model training pipeline
-│   ├── forecasting.py        # Forecasting logic
-│   ├── evaluation.py         # Model evaluation
-│   ├── insights.py           # AI-generated insights and cluster interpretation
-│   ├── visualization.py      # Geospatial visualization scripts
-│   └── app.py                # Streamlit dashboard application
-│
-├── fire_detection.ipynb      # Main end-to-end notebook
-├── requirements.txt          # Python dependencies
+├── app/                          # Streamlit application files
+│   └── app.py                    # Main Streamlit dashboard
+├── data/                         # Project datasets
+├── docs/                         # Documentation and visualizations
+├── models/                       # Saved trained models
+├── notebooks/                    # Jupyter notebooks (Source of Truth)
+├── src/                          # Core Python logic and scripts
+├── requirements.txt              # Python dependencies
 └── README.md
 ```
 
@@ -123,7 +111,7 @@ The project features an interactive **Streamlit Web Application** designed with 
 
 #### **To Launch the Platform Locally:**
 ```powershell
-python -m streamlit run ".\forest fire risk intelligence\src\app.py"
+streamlit run app/app.py
 ```
 
 ---
@@ -149,7 +137,7 @@ python -m streamlit run ".\forest fire risk intelligence\src\app.py"
 ```bash
 git clone https://github.com/yourusername/Forest-Fire-Risk-Analytics.git
 
-cd Forest-Fire-Risk-Analytics
+cd ForestFireIntelligence
 ```
 
 ---
