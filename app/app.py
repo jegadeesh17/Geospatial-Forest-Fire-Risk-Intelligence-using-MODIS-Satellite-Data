@@ -40,8 +40,10 @@ st.divider()
 
 @st.cache_data
 def load_data():
-    # Force cache invalidation to load region_name
-    data_path = os.path.join(os.path.dirname(__file__), "../data/modis_data10%.csv")
+    base = os.path.join(os.path.dirname(__file__), "../data")
+    data_path = os.path.join(base, "modis_data10%.csv")
+    if not os.path.exists(data_path):
+        data_path = os.path.join(base, "modis_data_sample.csv")
     if not os.path.exists(data_path):
         return pd.DataFrame()
     df = pd.read_csv(data_path)
@@ -61,7 +63,7 @@ with st.spinner("Loading Environmental Intelligence Data..."):
     df = load_data()
 
 if df.empty:
-    st.error("Data source missing. Please ensure `modis_data10%.csv` is in the `data/` directory.")
+    st.error("Data source missing. Place `modis_data10%.csv` or `modis_data_sample.csv` in the `data/` directory.")
     st.stop()
 
 # ================================

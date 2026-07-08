@@ -8,9 +8,11 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (Ignore large dataset, keep 10% sample)
+# Data (full dataset local-only; sample committed)
 data/modis_data.csv
+data/modis_data10%.csv
 data/modisdata/
+!data/modis_data_sample.csv
 
 # IDE
 .vscode/
