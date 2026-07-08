@@ -21,6 +21,9 @@ data/modisdata/
 # Logs
 logs-*.txt
 
+# Regenerable notebook exports
+docs/*.html
+
 # Documents
 *.docx
 *.pdf

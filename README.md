@@ -26,6 +26,8 @@ The system analyzes thermal anomalies, spatial wildfire patterns, and temporal f
 ### **Dataset**
 
 * **Source:** NASA MODIS Active Fire Dataset
+* **In repo:** `data/modis_data_sample.csv`
+* **Full data:** Place `modis_data10%.csv` or `modis_data.csv` in `data/` — see [data/DATA_SETUP.md](data/DATA_SETUP.md)
 * **Coverage:** Pan-India wildfire observations
 * **Spatial Resolution:** Approx. 1km–4km satellite fire detection grids
 
